@@ -1,7 +1,7 @@
-import { gql } from "@apollo/client";
+import { gql } from '../__generated__/gql'
 
-export const GET_BOOKS = gql`
-query GetBooks {
+export const GET_BOOKS = gql(`
+query GetBooksQuery {
   books {
     author
     coverPhotoURL
@@ -9,4 +9,4 @@ query GetBooks {
     title
   }
 }
-`;
+`);
