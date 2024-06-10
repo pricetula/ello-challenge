@@ -5,7 +5,6 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import InputAdornment from '@mui/material/InputAdornment';
-import Typography from '@mui/material/Typography';
 import SearchIcon from '@mui/icons-material/Search';
 import TextField from '@mui/material/TextField';
 import { SEARCH_BOOKS } from '../../gql/queries/books';
@@ -13,6 +12,8 @@ import { useAppContext } from '../../context/AppContext';
 import { useDerivedReadingBookKeys } from '../../hook/addedBookKeys';
 import { getBookKey } from '../../state/readingList';
 import SearchResultItem from './SearchResultItem';
+import SearchEmpty from './SearchEmpty';
+import SearchLoading from './SearchLoading';
 
 const style = {
     position: 'absolute',
@@ -27,9 +28,10 @@ const style = {
 };
 const resultStyle = {
     width: "100%",
-    Height: 300,
+    height: 300,
     maxHeight: 300,
     overflow: "auto",
+    marginTop: 16,
 };
 
 export default function SearchBox() {
@@ -76,7 +78,7 @@ export default function SearchBox() {
                 <Box sx={style}>
                     <TextField
                         id="standard-basic"
-                        placeholder="Find book to add in your reading list"
+                        placeholder="Search books"
                         variant="standard"
                         fullWidth
                         InputProps={{
@@ -86,11 +88,11 @@ export default function SearchBox() {
                     />
                     <Box style={resultStyle}>
                         {
-                            (loading && <Typography>Loading...</Typography>) ||
+                            (loading && <SearchLoading />) ||
                             (bookResults?.length && bookResults?.length > 0 && bookResults?.map?.((book) => (
                                 book && <SearchResultItem key={getBookKey(book)} book={book}/>
                             ))) ||
-                            (<Typography>No books found</Typography>)
+                            (<SearchEmpty searchTerm={searchTerm} addedBookKeys={addedBookKeys} />)
                         }
                     </Box>
                 </Box>

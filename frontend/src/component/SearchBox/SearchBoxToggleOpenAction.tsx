@@ -19,8 +19,8 @@ export default function SearchBox() {
             style={{ display: 'flex', justifyContent: 'space-between' }}
         >
             <span>Find books</span>
-            <span style={{ marginLeft: 26, display: 'flex', alignItems: 'center' }}>
-                <KeyboardCommandKeyIcon sx={{ width: 12, lineHeight: 1 }} />K
+            <span style={{ marginLeft: 30, display: 'flex', alignItems: 'center' }}>
+                <KeyboardCommandKeyIcon sx={{ width: 14, lineHeight: 1 }} />K
             </span>
         </Button>
     );

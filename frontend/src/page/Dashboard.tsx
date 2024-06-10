@@ -1,5 +1,5 @@
 import Grid from '@mui/material/Grid';
-import BookList from '../component/BookList';
+import BookList from '../component/BookList/BookList';
 import { Profile } from '../component/Profile';
 
 export default function Dashboard() {

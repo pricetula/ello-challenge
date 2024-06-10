@@ -16,14 +16,14 @@ export function Profile() {
         <Box paddingTop={12} paddingX={4} paddingBottom={4}>
             <Grid container direction="column" justifyContent="end" spacing={2}>
                 <Grid item >
-                    <Typography variant="h5" component="h2" fontWeight="bold">
+                    <Typography variant="h5" component="h2" fontWeight="bold" color="secondary">
                         Jane Doe
                     </Typography>
                 </Grid>
                 <Grid item>
                     <Grid container>
                         <Grid item xs={6}>
-                            <Typography>
+                            <Typography color="secondary.light">
                                 {
                                     totalBooksAdded
                                         ? (
