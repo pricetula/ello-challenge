@@ -19,6 +19,19 @@ const theme = createTheme({
       light: "#CFFAFA",
       dark: "#28B8B8",
     },
+    secondary: {
+      main: "#335C6E",
+      light: "#b1c5ce",
+      dark: "#335C6E",
+    },
+    text: {
+      primary: "#335C6E",
+      secondary: "#335C6E",
+    },
+    error: {
+      main: "#F76434",
+      light: "#FFE6DC",
+    }
   },
 });
 
