@@ -6,7 +6,12 @@ export const typeDefs = `#graphql
     readingLevel: String
   }
 
+  input SearchTermInput {
+    term: String! # Make search term mandatory
+  }
+
   type Query {
     books: [Book]
+    searchBooks(input: SearchTermInput!): [Book]
   }
 `;
