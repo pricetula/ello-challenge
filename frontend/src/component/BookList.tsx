@@ -1,16 +1,26 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import Grid from '@mui/material/Unstable_Grid2';
 import type { Book } from "../gql/__generated__/graphql"
 import BookItem from "./BookItem"
 import { useAppContext } from '../context/AppContext';
+import { useReadingListStore } from '../state/readingList';
 
-export interface BookListProps {
-    books: Book[]
-    loading: boolean
-}
-
-export default function BookList({ books, loading }: BookListProps) {
+export default function BookList() {
     const { setAppState } = useAppContext()
+    const bookCollection = useReadingListStore((state) => state.books)
+    const favouriteBookKeys = useReadingListStore((state) => state.favouriteBookKeys)
+    const books = useMemo<Book[]>(
+        () => {
+            const readingBookKeys = Object.keys(bookCollection).filter(
+                (k) => !favouriteBookKeys.includes(k)
+            )
+            return [
+                ...favouriteBookKeys,
+                ...readingBookKeys,
+            ].map((k) => bookCollection[k])
+        },
+        [bookCollection, favouriteBookKeys]
+    )
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
             if (event?.key === 'k' && event?.metaKey) {
@@ -22,9 +32,6 @@ export default function BookList({ books, loading }: BookListProps) {
             window.removeEventListener('keydown', handleKeyDown);
         };
     }, []);
-    if (loading) {
-        return <p>Loading...</p>
-    }
     return (
         <Grid
             container
