@@ -13,7 +13,8 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
-    "\nquery GetBooksQuery {\n  books {\n    author\n    coverPhotoURL\n    readingLevel\n    title\n  }\n}\n": types.GetBooksQueryDocument,
+    "\n  query GetBooksQuery {\n    books {\n      author\n      coverPhotoURL\n      readingLevel\n      title\n    }\n  }\n": types.GetBooksQueryDocument,
+    "\n  query SearchBooksQuery($input: SearchTermInput!) {\n    searchBooks(input: $input) {\n      author\n      coverPhotoURL\n      readingLevel\n      title\n    }\n  }\n": types.SearchBooksQueryDocument,
 };
 
 /**
@@ -33,7 +34,11 @@ export function gql(source: string): unknown;
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function gql(source: "\nquery GetBooksQuery {\n  books {\n    author\n    coverPhotoURL\n    readingLevel\n    title\n  }\n}\n"): (typeof documents)["\nquery GetBooksQuery {\n  books {\n    author\n    coverPhotoURL\n    readingLevel\n    title\n  }\n}\n"];
+export function gql(source: "\n  query GetBooksQuery {\n    books {\n      author\n      coverPhotoURL\n      readingLevel\n      title\n    }\n  }\n"): (typeof documents)["\n  query GetBooksQuery {\n    books {\n      author\n      coverPhotoURL\n      readingLevel\n      title\n    }\n  }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\n  query SearchBooksQuery($input: SearchTermInput!) {\n    searchBooks(input: $input) {\n      author\n      coverPhotoURL\n      readingLevel\n      title\n    }\n  }\n"): (typeof documents)["\n  query SearchBooksQuery($input: SearchTermInput!) {\n    searchBooks(input: $input) {\n      author\n      coverPhotoURL\n      readingLevel\n      title\n    }\n  }\n"];
 
 export function gql(source: string) {
   return (documents as any)[source] ?? {};
