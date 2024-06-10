@@ -6,10 +6,18 @@ import { useAppContext } from '../../context/AppContext';
 import { useReadingListStore } from '../../state/readingList';
 import BookListEmpty from './BookListEmpty';
 
+/**
+ * BookList component that displays a list of books.
+ * @returns {JSX.Element} BookList component.
+ */
 export default function BookList() {
+    // setAppState function used to set the app state
     const { setAppState } = useAppContext()
+    // bookCollection used to get the list of books added from the readingList state
     const bookCollection = useReadingListStore((state) => state.books)
+    // favouriteBookKeys used to get the list of favourite book keys added from the readingList state
     const favouriteBookKeys = useReadingListStore((state) => state.favouriteBookKeys)
+    // books used to get the list of books to display
     const books = useMemo<Book[]>(
         () => {
             const readingBookKeys = Object.keys(bookCollection).filter(
@@ -22,6 +30,7 @@ export default function BookList() {
         },
         [bookCollection, favouriteBookKeys]
     )
+    // useEffect hook to listen for the meta+k key combination to open the search box
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
             if (event?.key === 'k' && event?.metaKey) {

@@ -6,6 +6,10 @@ import Box from "@mui/material/Box";
 import { useReadingListStore } from '../state/readingList';
 import { useMemo } from 'react';
 
+/**
+ * profile component that displays the name of the teacher, a count of all books added and list of avatars for their favourite books added.
+ * @returns {JSX.Element} Profile component.
+ */
 export function Profile() {
     const favouriteBookKeys = useReadingListStore((state) => state.favouriteBookKeys)
     const bookCollection = useReadingListStore((state) => state.books)

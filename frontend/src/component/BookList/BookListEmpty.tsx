@@ -2,6 +2,10 @@ import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
 import SearchBoxToggleOpenAction from '../SearchBox/SearchBoxToggleOpenAction';
 
+/**
+ * BookListEmpty component that displays a message when the reading list is empty.
+ * @returns {JSX.Element} BookListEmpty component.
+ */
 export default function BookListEmpty() {
     return (
         <Grid container direction="column" gap={4} width="100%" height={400} justifyContent="center" alignItems="center">

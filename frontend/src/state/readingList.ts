@@ -9,7 +9,7 @@ interface ReadingListState {
     setFavouriteBook: (bookKey: string) => void
     removeFavouriteBook: (bookKey: string) => void
 }
-
+// readingListStore used hold books added by the user and favourite books added by the user
 export const useReadingListStore = create<ReadingListState>()((set) => ({
     books: {},
     favouriteBookKeys: [],
@@ -19,6 +19,7 @@ export const useReadingListStore = create<ReadingListState>()((set) => ({
     removeFavouriteBook: (bookKey) => set(removeFavouriteBook(bookKey))
 }))
 
+// addBooks function used to add books to the readingList state
 function addBooks(books: Book[]): (state: ReadingListState) => ReadingListState {
     return (state) => {
         if (books.length === 0) return state
@@ -29,7 +30,7 @@ function addBooks(books: Book[]): (state: ReadingListState) => ReadingListState 
         return { books: { ...state.books, ...newBooks } } as ReadingListState
     }
 }
-
+// removeBook function used to remove a book from the readingList state
 function removeBook(bookKey: string): (state: ReadingListState) => ReadingListState {
     return (state) => {
         if (!bookKey || !state.books[bookKey]) return state
@@ -38,7 +39,7 @@ function removeBook(bookKey: string): (state: ReadingListState) => ReadingListSt
         return { books: restBooks, favouriteBookKeys } as ReadingListState
     }
 }
-
+// setFavouriteBook function used to set a book as favourite in the readingList state
 function setFavouriteBook(bookKey: string): (state: ReadingListState) => ReadingListState {
     return (state) => {
         if (!bookKey || state.favouriteBookKeys.includes(bookKey)) return state
@@ -47,7 +48,7 @@ function setFavouriteBook(bookKey: string): (state: ReadingListState) => Reading
         } as ReadingListState
     }
 }
-
+// removeFavouriteBook function used to remove a book from the favourite list in the readingList state
 function removeFavouriteBook(bookKey: string): (state: ReadingListState) => ReadingListState {
     return (state) => {
         if (!bookKey || !state.favouriteBookKeys.includes(bookKey)) return state
@@ -56,7 +57,7 @@ function removeFavouriteBook(bookKey: string): (state: ReadingListState) => Read
         } as ReadingListState
     }
 }
-
+// getBookKey helper function used to get construct a key for a book
 export function getBookKey(book: Book): string {
     return `${book.title}-${book.author}-${book.coverPhotoURL}-${book.readingLevel}`
 }

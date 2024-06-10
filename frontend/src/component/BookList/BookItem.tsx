@@ -13,21 +13,37 @@ import type { Book } from "../../gql/__generated__/graphql"
 import { useReadingListStore, getBookKey } from '../../state/readingList';
 import { useMemo } from 'react';
 
+/**
+ * BookProps interface that defines the props for the BookItem component.
+ * @param {Book} book - The book object.
+ */
 export interface BookProps {
     book: Book
 }
 
+/**
+ * BookItem component that displays a single book item.
+ * @param {BookProps} props - The props for the component.
+ * @returns {JSX.Element} BookItem component.
+ */
 export default function BookItem({ book }: BookProps) {
+    // favouriteBookKeys used to get the list of favourite book keys added from the readingList state
     const favouriteBookKeys = useReadingListStore((state) => state.favouriteBookKeys)
+    // removeBook function used to remove a book from the readingList state
     const removeBook = useReadingListStore((state) => state.removeBook)
+    // setFavouriteBook function used to set a book as favourite in the readingList state
     const setFavouriteBook = useReadingListStore((state) => state.setFavouriteBook)
+    // removeFavouriteBook function used to remove a book from the favourite list in the readingList state
     const removeFavouriteBook = useReadingListStore((state) => state.removeFavouriteBook)
 
+    // isFavouriteBook used to check if the book is in the favourite list
     const isFavouriteBook = useMemo(() => favouriteBookKeys.includes(getBookKey(book)), [favouriteBookKeys, book])
 
+    // handleRemove function used to remove a book from the readingList state
     const handleRemove = (b: Book) => {
         removeBook(getBookKey(b))
     }
+    // handleSetOrRemoveFavourite function used to set or remove a book from the favourite list in the readingList state
     const handleSetOrRemoveFavourite = (b: Book) => {
         if (isFavouriteBook) {
             removeFavouriteBook(getBookKey(b))

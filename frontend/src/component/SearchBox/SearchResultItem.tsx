@@ -6,12 +6,23 @@ import Typography from "@mui/material/Typography";
 import { Book } from "../../gql/__generated__/graphql";
 import { useReadingListStore } from '../../state/readingList';
 
+/**
+ * SearchResultItemProps interface that defines the props for the SearchResultItem component.
+ * @param {Book} book - The book object.
+ */
 export interface SearchResultItemProps {
     book: Book;
 }
 
+/**
+ * SearchResultItem component that displays a single book item from the search result.
+ * @param {SearchResultItemProps} props - The props for the component.
+ * @returns {JSX.Element} SearchResultItem component.
+ */
 export default function SearchResultItem({ book }: SearchResultItemProps) {
+    // addBooks function used to add books to readingList state
     const addBooks = useReadingListStore((state) => state.addBooks)
+    // handleAdd function used to add a single book to readingList state
     const handleAdd = (book: Book) => {
         addBooks([book])
     }

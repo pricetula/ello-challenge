@@ -3,9 +3,15 @@ import KeyboardCommandKeyIcon from '@mui/icons-material/KeyboardCommandKey';
 import SearchIcon from '@mui/icons-material/Search';
 import { useAppContext } from '../../context/AppContext';
 
+/**
+ * SearchBox component that displays the search box.
+ * @returns {JSX.Element} SearchBox component.
+ */
 export default function SearchBox() {
+    // get the appState and setAppState from AppContext to allow for setting the openSearchBox state which is global
     const { setAppState } = useAppContext()
 
+    // function to handle the click event to open the search box
     const handleClick = () => {
         setAppState({ openSearchBox: true })
     }

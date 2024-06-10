@@ -3,6 +3,10 @@ import Toolbar from '@mui/material/Toolbar';
 import logoElloSRC from '../assets/logoEllo.svg';
 import SearchBoxToggleOpenAction from './SearchBox/SearchBoxToggleOpenAction';
 
+/**
+ * Nav component that displays top navigation bar.
+ * @returns {JSX.Element} Profile component.
+ */
 export default function Nav() {
     return (
         <AppBar color="default" position="fixed" component="nav">
