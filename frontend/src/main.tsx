@@ -40,7 +40,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <ThemeProvider theme={theme}>
         <AppContextProvider>
           <Nav />
-          <RouterProvider router={router} />
+            <RouterProvider router={router} />
           <SearchBoxModal />
         </AppContextProvider>
       </ThemeProvider>

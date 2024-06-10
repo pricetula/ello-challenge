@@ -27,7 +27,8 @@ const style = {
 };
 const resultStyle = {
     width: "100%",
-    Height: 400,
+    Height: 300,
+    maxHeight: 300,
     overflow: "auto",
 };
 
@@ -83,7 +84,7 @@ export default function SearchBox() {
                         }}
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
-                    <Box sx={resultStyle}>
+                    <Box style={resultStyle}>
                         {
                             (loading && <Typography>Loading...</Typography>) ||
                             (bookResults?.length && bookResults?.length > 0 && bookResults?.map?.((book) => (

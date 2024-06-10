@@ -1,13 +1,20 @@
-// import { useQuery } from '@apollo/client';
-// import { GET_BOOKS } from '../gql/queries/books';
+import Grid from '@mui/material/Grid';
 import BookList from '../component/BookList';
-// import type { Book } from '../gql/__generated__/graphql';
+import { Profile } from '../component/Profile';
 
 export default function Dashboard() {
-  // const { loading, error, data } = useQuery(GET_BOOKS);
-
-  // if (error) return <p>Error : {error.message}</p>;
   return (
-      <BookList />
+    <Grid container direction="column" spacing={2} height="100vh" flexWrap="nowrap">
+      <Grid item style={{ height: 240 }}>
+        <Profile />
+      </Grid>
+      <Grid item style={{
+        height: 780,
+        maxHeight: 780,
+        overflow: "auto"
+      }}>
+        <BookList />
+      </Grid>
+    </Grid>
   )
 }

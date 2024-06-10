@@ -35,7 +35,6 @@ export default function BookList() {
     return (
         <Grid
             container
-            paddingTop={16}
             paddingLeft={5}
             paddingRight={5}
             spacing={4}
