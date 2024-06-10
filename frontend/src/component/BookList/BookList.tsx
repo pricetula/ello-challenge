@@ -1,9 +1,10 @@
 import { useEffect, useMemo } from 'react';
 import Grid from '@mui/material/Unstable_Grid2';
-import type { Book } from "../gql/__generated__/graphql"
+import type { Book } from "../../gql/__generated__/graphql"
 import BookItem from "./BookItem"
-import { useAppContext } from '../context/AppContext';
-import { useReadingListStore } from '../state/readingList';
+import { useAppContext } from '../../context/AppContext';
+import { useReadingListStore } from '../../state/readingList';
+import BookListEmpty from './BookListEmpty';
 
 export default function BookList() {
     const { setAppState } = useAppContext()
@@ -39,9 +40,14 @@ export default function BookList() {
             paddingRight={5}
             spacing={4}
         >
-            {books.map((book) => (
-                <BookItem book={book} />
-            ))}
+            {
+                (books.length > 0 && books.map((book) => (
+                    <BookItem book={book} />
+                ))) ||
+                (
+                    <BookListEmpty />
+                )
+            }
         </Grid>
     )
 }

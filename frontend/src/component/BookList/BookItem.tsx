@@ -9,8 +9,8 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Unstable_Grid2';
-import type { Book } from "../gql/__generated__/graphql"
-import { useReadingListStore, getBookKey } from '../state/readingList';
+import type { Book } from "../../gql/__generated__/graphql"
+import { useReadingListStore, getBookKey } from '../../state/readingList';
 import { useMemo } from 'react';
 
 export interface BookProps {
